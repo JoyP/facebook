@@ -11,6 +11,9 @@
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right
         if user
+          li: a(href= '/users') Find Users
+          li: a(href= '/profile') Profile
+          li: a(href= '/profile/edit') Edit Profile
           li
             form.navbar-form(method='post', action='/logout')
               .form-group

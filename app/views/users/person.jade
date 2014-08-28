@@ -1,0 +1,38 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-4
+      a.thumbnail(href='#')
+        img(src=person.photo)
+  .row
+    table
+      thead
+        tr
+          th Email: #{person.email}
+          th Phone: #{person.phone}
+          th Twitter: #{person.twitter}
+          th Facebook: #{person.facebook}
+      body
+        tr
+          td: a(href=user.email, target='/users/#{user.email}')= user.email
+          td= user.phone
+          td: a(href=user.facebook, target='_blank')= user.facebook
+          td: a(href=user.twitter, target='_blank')= user.twitter
+
+  .row
+    .col-xs-4
+      form(role='form', method='post', action='/message')
+        .radio
+          label
+            input
+            .span
+          label
+            input
+            .span
+          label
+            input
+            .span
+    .col-xs-8
+
+block scripts
+

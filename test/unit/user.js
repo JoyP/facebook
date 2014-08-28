@@ -28,5 +28,40 @@ describe('User', function(){
       expect(u).to.be.instanceof(User);
     });
   });
+
+  describe('#update', function(){
+    it('should update a user profile', function(){
+      var newUser = new User(),
+          o       = {twitter:'twitter/newUser.com', visible:'private', phone:'16157726733'};
+
+      newUser.save(o, function(err, user){
+        expect(newUser.isVisible).to.be.false;
+        expect(newUser.twitter).to.equal('twitter/newUser.com');
+        expect(newUser.phone).to.equal('16157726733');
+      });
+    });
+  });
+
+  describe('find', function(){
+    it('should find all public users', function(){
+      User.find({isVisible:true}, function(err, users){
+        expect(users).to.have.length(3);
+      });
+    });
+  });
+
+  describe('#send', function(){
+    it('should send a text message to a user', function(done){
+      User.findById('000000000000000000000001', function(err, sender){
+        User.findById('000000000000000000000002', function(err, receiver){
+          sender.send(receiver, {mtype:'text', message:'yo'}, function(err, response){
+            expect(response.sid).to.be.ok;
+            done();
+          });
+        });
+      });
+    });
+  });
+
 });
 

@@ -40,3 +40,4 @@ $ npm test
 ### License
 [MIT](LICENSE)
 
+[![Coverage Status](https://img.shields.io/coveralls/JoyP/facebook.svg)](https://coveralls.io/r/JoyP/facebook)
