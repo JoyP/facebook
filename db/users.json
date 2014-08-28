@@ -1,6 +1,6 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
-  "email" : "bob@aol.com",
+  "email" : "jkunzmann@gmail.com",
   "isVisible" : true,
   "phone" : "16157726733",
   "photo" : "https://pbs.twimg.com/profile_images/1815761070/Harper_MF_cover.jpg",
@@ -8,7 +8,7 @@
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "email" : "sue@aol.com",
+  "email" : "joykunz@gmail.com",
   "isVisible" : true,
   "phone" : "16157726733",
   "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa"

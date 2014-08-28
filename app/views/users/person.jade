@@ -1,38 +1,49 @@
 extends ../shared/template
 block content
   .row
+    h2=person.email
+  .row
     .col-xs-4
       a.thumbnail(href='#')
         img(src=person.photo)
+    .col-xs-4
+      .panel.panel-default
+        .panel-body
+          form(role='form', method='post', action='/message/#{person._id}')
+            .row
+              .col-xs-6
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='text' checked=true)
+                    span Text
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='email')
+                    span Email
+                .radio
+                  label
+                    input(type='radio' name='mtype' value='internal')
+                    span Internal
+              .col-xs-6
+                .form-group
+                  label(for='message') Message
+                  textarea.form-control#message(name='message', autofocus=true)
+                .form-group
+                  button.btn.btn-info.btn-sm(type='submit') Send Message
   .row
-    table
+    table.table
       thead
         tr
-          th Email: #{person.email}
-          th Phone: #{person.phone}
-          th Twitter: #{person.twitter}
-          th Facebook: #{person.facebook}
+          th Email:
+          th Phone:
+          th Twitter:
+          th Facebook:
       body
         tr
-          td: a(href=user.email, target='/users/#{user.email}')= user.email
-          td= user.phone
-          td: a(href=user.facebook, target='_blank')= user.facebook
-          td: a(href=user.twitter, target='_blank')= user.twitter
-
-  .row
-    .col-xs-4
-      form(role='form', method='post', action='/message')
-        .radio
-          label
-            input
-            .span
-          label
-            input
-            .span
-          label
-            input
-            .span
-    .col-xs-8
+          td: a(href=person.email, target='/users/#{user.email}')= person.email
+          td= person.phone
+          td: a(href=person.facebook, target='_blank')= person.facebook
+          td: a(href=person.twitter, target='_blank')= person.twitter
 
 block scripts
 

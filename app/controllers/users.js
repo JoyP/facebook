@@ -78,3 +78,7 @@ exports.message = function(req,res){
     });
   });
 };
+
+exports.messages = function(req,res){
+
+};

@@ -2,7 +2,8 @@
 
 var bcrypt = require('bcrypt'),
     Mongo  = require('mongodb'),
-    _      = require('lodash');
+    _      = require('lodash'),
+    Mailgun= require('mailgun-js');
 
 function User(o){
 }
@@ -64,21 +65,30 @@ User.prototype.send = function(receiver, obj, cb){
       sendText(receiver.phone, obj.message, cb);
       break;
     case 'email':
-      sendText(receiver.email, obj.message, cb);
+      sendEmail(this.email, receiver.email, 'Message from Joy- through NodeJS', obj.message, cb);
       break;
     case 'internal':
   }
 };
 
 module.exports = User;
+
+// PRIVATE FUNCTIONS //
 function sendText(to, body, cb){
   if(!to){return cb();}
 
   var accountSid = process.env.TWSID,
       authToken  = process.env.TWTOK,
-      from       = process.env.FROM,
+      from       = process.env.FROMPHONE,
       client     = require('twilio')(accountSid, authToken);
 
   client.messages.create({to:to, from:from, body:body}, cb);
 }
 
+function sendEmail(from, to, subject, body, cb){
+
+  var mailgun = new Mailgun({apiKey: process.env.MGID, domain: process.env.MGDOMAINi}),
+      data    = {from:from, to:to, subject:subject, text:body};
+
+  mailgun.messages().send(data, cb);
+}

@@ -40,4 +40,5 @@ $ npm test
 ### License
 [MIT](LICENSE)
 
+[![Build Status](https://travis-ci.org/JoyP/facebook.svg?branch=master)](https://travis-ci.org/JoyP/facebook)
 [![Coverage Status](https://img.shields.io/coveralls/JoyP/facebook.svg)](https://coveralls.io/r/JoyP/facebook)
