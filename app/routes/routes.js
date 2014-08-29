@@ -39,6 +39,7 @@ module.exports = function(app, express){
   app.get('/users/:email', users.person);
   app.post('/message/:userId', users.message);
   app.get('/messages', users.messages);
+  app.get('/messages/:messageId', users.showMessage);
 
   console.log('Express: Routes Loaded');
 };

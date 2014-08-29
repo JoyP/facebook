@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt'),
     Mongo  = require('mongodb'),
     _      = require('lodash'),
     Mailgun= require('mailgun-js'),
-    Message= require('../message.js');
+    Message= require('./message.js');
 
 function User(o){
 }

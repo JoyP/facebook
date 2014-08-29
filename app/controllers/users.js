@@ -86,3 +86,9 @@ exports.messages = function(req,res){
     res.render('/messages', {messages:messages, moment:moment});
   });
 };
+
+exports.showMessage = function(req, res){
+  Message.findOne({_id:req.body.messageId}, function(err, message){
+    res.render('showMessage', {message:message, moment:moment});
+  });
+};
