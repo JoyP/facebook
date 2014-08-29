@@ -1,0 +1,9 @@
+{
+  "_id":{"$oid":"000000000000000000000001"},
+  "fromId":"",
+  "toId":"",
+  "date":{"$date":477295200000},
+  "isRead":false,
+  "body":{"Hello! How are you?"},
+}
+

@@ -7,7 +7,7 @@ var expect    = require('chai').expect,
     User      = require('../../app/models/user'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
-    db        = 'template-test';
+    db        = 'facebook-test';
 
 describe('User', function(){
   before(function(done){
@@ -61,7 +61,6 @@ describe('User', function(){
         });
       });
     });
-  });
 
     it('should send an email to a user', function(done){
       User.findById('000000000000000000000002', function(err, sender){
@@ -73,6 +72,7 @@ describe('User', function(){
         });
       });
     });
+  });
 
 });
 

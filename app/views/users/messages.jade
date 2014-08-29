@@ -9,3 +9,7 @@ block content
           th From
           th Date
           th Message
+        each message in messages
+          tr
+            td: a(href=fromUser.email, target='/users/#{fromUser.email}')= fromUser.email
+            td=

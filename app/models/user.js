@@ -3,7 +3,8 @@
 var bcrypt = require('bcrypt'),
     Mongo  = require('mongodb'),
     _      = require('lodash'),
-    Mailgun= require('mailgun-js');
+    Mailgun= require('mailgun-js'),
+    Message= require('../message.js');
 
 function User(o){
 }
@@ -68,6 +69,7 @@ User.prototype.send = function(receiver, obj, cb){
       sendEmail(this.email, receiver.email, 'Message from Joy- through NodeJS', obj.message, cb);
       break;
     case 'internal':
+      sendInternal(this.email, receiver.email, obj.message, cb);
   }
 };
 
@@ -91,4 +93,9 @@ function sendEmail(from, to, subject, body, cb){
       data    = {from:from, to:to, subject:subject, text:body};
 
   mailgun.messages().send(data, cb);
+}
+
+function sendInternal(from, to, body, cb){
+  var internal = new Message({from:from, to:to, body:body});
+  Message.collection.save(internal, cb);
 }
